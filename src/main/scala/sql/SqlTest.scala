@@ -8,7 +8,7 @@ import org.apache.spark.sql.{DataFrame, SparkSession}
   * @author hongtao.hao
   * @date 2019/7/2
   */
-object Test {
+object SqlTest {
 
   def dbConnProperties(): Properties = {
     val ConnProperties = new Properties();
@@ -33,8 +33,8 @@ object Test {
     val Student = "Student"
     val Teacher = "Teacher"
     val df_SC = sc.read.jdbc(url, SC, dbConnProperties())
-    val df_Student = sc.read.jdbc(url,Student,dbConnProperties())
-    val df_Teacher = sc.read.jdbc(url,Teacher,dbConnProperties())
+    val df_Student = sc.read.jdbc(url, Student, dbConnProperties())
+    val df_Teacher = sc.read.jdbc(url, Teacher, dbConnProperties())
     //df_SC.show() //使用一个action算子来检查是否能读取数据
     //df_Student.show()
     //df_Teacher.show()
@@ -49,27 +49,27 @@ object Test {
     //    frame1.show()
 
     //1.1 查询同时存在" 01 "课程和" 02 "课程的情况
-//    val frame = sc.sql("select * from sc s1 " +
-//      "where s1.SId in  " +
-//      "(select distinct(s2.SId) from sc s2 where s2.CId = '02') " +
-//      "and s1.CId = '01'")
+    //    val frame = sc.sql("select * from sc s1 " +
+    //      "where s1.SId in  " +
+    //      "(select distinct(s2.SId) from sc s2 where s2.CId = '02') " +
+    //      "and s1.CId = '01'")
 
-//    val frame = sc.sql(
-//      "select * from sc s1,sc s2 " +
-//        "where s1.SId = s2.SId " +
-//        "and s1.CId = '01' " +
-//        "and s2.CId = '02' " +
-//        "order by s1.SId")
+    //    val frame = sc.sql(
+    //      "select * from sc s1,sc s2 " +
+    //        "where s1.SId = s2.SId " +
+    //        "and s1.CId = '01' " +
+    //        "and s2.CId = '02' " +
+    //        "order by s1.SId")
 
 
-//    val frame = sc.sql("select * from sc s1 " +
-//      "where s1.SId not in " +
-//      "(select SId from sc where sc.CId = '01') " +
-//      "and s1.CId = '02' " +
-//      "order by s1.SId")
+    //    val frame = sc.sql("select * from sc s1 " +
+    //      "where s1.SId not in " +
+    //      "(select SId from sc where sc.CId = '01') " +
+    //      "and s1.CId = '02' " +
+    //      "order by s1.SId")
 
-//    val frame = sc.sql(
-//      "select *,Row_Number() over ( order by score) rank from SC where SId in('01','02') order by rank")
+    //    val frame = sc.sql(
+    //      "select *,Row_Number() over ( order by score) rank from SC where SId in('01','02') order by rank")
 
 
     //val frame = sc.sql("select stu.*,scavg.avg from stu join (select SId,avg(sc.score) as avg from sc group by SId having avg(sc.score) >= 60) scavg  on stu.SId = scavg.SId")
@@ -80,11 +80,12 @@ object Test {
 
     //val frame = sc.sql("select stu.*,s.count,s.sum from stu left join (select SId,count(DISTINCT CId) as count,sum(score) as sum from sc group by SId) as s on stu.SId = s.SId order by stu.SId")
 
-//    val frame1 = sc.sql("select * from sc where score like '8%'")
-//    frame1.show()
-//
-//    val frame = sc.sql("select * from tc where Tname like '李%'")
-//    frame.show()
+    //    val frame1 = sc.sql("select * from sc where score like '8%'")
+    //    frame1.show()
+    //
+    val frame = sc.sql("select * from tc where Tname like '李%'")
+
+
 
   }
 
