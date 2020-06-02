@@ -5,13 +5,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>com.example</groupId>
-    <artifactId>com.example.spark</artifactId>
+    <artifactId>sparkdemo</artifactId>
     <version>1.0-SNAPSHOT</version>
 
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <spark.version>2.4.0</spark.version>
+        <spark.version>2.3.0</spark.version>
         <scala.version>2.11</scala.version>
         <hadoop.version>2.6.0</hadoop.version>
 

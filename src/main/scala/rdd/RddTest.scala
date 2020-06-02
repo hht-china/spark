@@ -1,6 +1,5 @@
-package sql
+package rdd
 
-import org.apache.spark.SparkContext
 import org.apache.spark.sql.SparkSession
 
 /**
