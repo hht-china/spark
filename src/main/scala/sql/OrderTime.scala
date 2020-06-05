@@ -29,16 +29,19 @@ object OrderTime {
 
     rdd.foreach(println)
 
-    val flat_rdd = rdd.flatMap(_.split(";"))
+    val flat_rdd = rdd.map(x => {
+       val sarr = x.split(";")
+      (sarr(0),sarr(1),sarr(3))
+    })
     flat_rdd.foreach(println)
 
-    val order_rdd = flat_rdd.map(record => new Order(record(0).toInt,record(1).toInt,record(2).toString))
-    order_rdd.foreach(println)
-
-    import sparkSession.implicits._
-
-    val order_df = order_rdd.toDF()
-    order_df.show()
+//    val order_rdd = flat_rdd.map(record => new Order(record(0).toInt,record(1).toInt,record(2).toString))
+//    order_rdd.foreach(println)
+//
+//    import sparkSession.implicits._
+//
+//    val order_df = order_rdd.toDF()
+//    order_df.show()
 
   }
 
