@@ -5,7 +5,8 @@ import org.apache.spark.ml.linalg.{Vector, Vectors}
 import org.apache.spark.sql._
 import org.apache.spark.sql.SparkSession
 
-/**线性回归
+/**
+  * 线性回归
   * @author hongtao.hao
   * @date 2019/7/8
   */

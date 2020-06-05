@@ -34,6 +34,7 @@ object SqlTest {
     val Teacher = "Teacher"
     val df_SC = sc.read.jdbc(url, SC, dbConnProperties())
     val df_Student = sc.read.jdbc(url, Student, dbConnProperties())
+
     val df_Teacher = sc.read.jdbc(url, Teacher, dbConnProperties())
     //df_SC.show() //使用一个action算子来检查是否能读取数据
     //df_Student.show()
